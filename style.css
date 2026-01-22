@@ -14,7 +14,13 @@ h2{
     background-color: rgb(245, 224, 224);
     border: 2px solid rgb(29, 44, 56);
     margin:20px;
-    
+    transition:0.3s;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.2);
+}
+#display-area:hover{
+    transform:translateY(-4px);
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+
 }
 #tot{
     background-color: rgb(133, 148, 162);

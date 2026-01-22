@@ -4,9 +4,9 @@ let addBtn = document.querySelector("#add-expense");
 let totalVal=document.querySelector("#total-val")
 let list=document.querySelector("#expense-list")
 
-let expenses=[];
-// let expenses=JSON.parse(localStorage.getItem("history"))||[];
-// render()
+
+let expenses=JSON.parse(localStorage.getItem("history"))||[];
+render()
 
 addBtn.addEventListener("click",function(){
     if(nameInp.value=="" || amountInp.value<=0){
@@ -35,6 +35,8 @@ function render(){
     list.innerHTML=clutter;
     totalVal.innerHTML=total;
 
+    // PREVIOUSLY I MADE A MISTAKE ON:
     // localStorage.setItem(JSON.stringify("history",expenses))
+    localStorage.setItem("history",JSON.stringify(expenses));   
 }
 
