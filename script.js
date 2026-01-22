@@ -9,7 +9,7 @@ let expenses=JSON.parse(localStorage.getItem("history"))||[];
 render()
 
 addBtn.addEventListener("click",function(){
-    if(nameInp.value=="" || amountInp.value<=0){
+    if(nameInp.value.trim()==="" || amountInp.value<=0){
         alert("Please fill in all fields");
         return;
     }
