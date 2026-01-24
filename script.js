@@ -52,6 +52,8 @@ function render(dataToPrint = expenses){
 
 // 5. DELETING AND EDITING THE EXPENSES
 list.addEventListener("click",function(details){
+    //check if the clicked element is either delete or edit button
+    if (details.target.classList.contains("del-btn") || details.target.classList.contains("edit-btn")) {
     let id_giver=Number(details.target.dataset.id);
     let id=expenses.findIndex(function(item){
         return (item.id===id_giver)
@@ -59,15 +61,24 @@ list.addEventListener("click",function(details){
 if (id !== -1) {
     if(details.target.classList.contains("del-btn")){
         expenses.splice(id,1)
-        render();
-    }
+        render()
+        }
+
+        //NO JOKES ON EDITING THE EXPENSES
     if(details.target.classList.contains("edit-btn")){
         let New_name=prompt("Enter new name",expenses[id].name)
-        expenses[id].name=New_name
+        while(New_name.trim().length===0){
+            New_name=prompt("Enter new name",expenses[id].name)
+        }
+        expenses[id].name=New_name;
         let New_amt=Number(prompt("Enter new amount",expenses[id].amount))
-        expenses[id].amount=New_amt
+        while(New_amt<=0){
+            New_amt=Number(prompt("Enter new amount",expenses[id].amount))
+        }
+        expenses[id].amount=New_amt;
+
         render();
-    }
+    }}
 }
 })
 
