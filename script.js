@@ -94,3 +94,10 @@ searchInp.addEventListener("input",function(){
     })
     render(search)
 })
+
+
+/*
+    TO ADD:
+    1)sorting
+    2) when we delete while seaching the search has to be used again
+*/
