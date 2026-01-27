@@ -76,7 +76,6 @@ list.addEventListener("click",function(details){
 if (id !== -1) {
     if(details.target.classList.contains("del-btn")){
         expenses.splice(id,1)
-        render()
         }
 
         //NO JOKES ON EDITING THE EXPENSES
@@ -91,45 +90,44 @@ if (id !== -1) {
             New_amt=Number(prompt("Enter new amount",expenses[id].amount))
         }
         expenses[id].amount=New_amt;
-
-        render();
-    }}
+    }
+    filterExp()
+    }
 }
 })
 
 
 // 6. SEARCHING THE EXPENSES
-searchInp.addEventListener("input",function(){
+function filterExp(){
     if(searchInp.value.trim()===""){
         render();
         return;
     }
-    let search=expenses.filter(function(value){
-        return (value.name.toLowerCase().includes(searchInp.value.toLowerCase()))
+    let search=expenses.filter(function(values){
+        return (values.name.toLowerCase().includes(searchInp.value.toLowerCase()))
     })
     render(search)
+}
+   //event listener for search input
+searchInp.addEventListener("input",function(){
+    filterExp();
 })
-
 
 //Sorting the Expenses
 sortSelect.addEventListener("change",function(){
-    render()
+    filterExp();
 })
 
 //CLEAR ALL BTN LOGIC
 clear_btn.addEventListener("click",function(){
     if(expenses.length>0){
-        let conf=prompt("This will clear all history. Do you accept(Y/N)?").toUpperCase()
+        let conf=prompt("This will clear all expenses. Do you accept(Y/N)?").toUpperCase()
         if (conf==="Y"){
             expenses=[];
+            searchInp.value="";
         render()}
     }
     else{
-        alert("No history to clear")
+        alert("No expenses to clear")
     }
 })
-
-/*
-    TO ADD:
-    1) when we delete while seaching the search has to be used again
-*/
