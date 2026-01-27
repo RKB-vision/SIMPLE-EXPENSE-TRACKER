@@ -41,3 +41,14 @@ h2{
     color:  rgb(110, 100, 100);
     border-radius: 5px;
 }
+#clear-all-btn{
+    margin:10px;
+    border-radius: 10px;
+    background-color: #ff4d4d; 
+    color: white;
+    transition:0.3s;
+}
+#clear-all-btn:hover{
+    color: #c90f0f;
+    background-color: beige;
+}

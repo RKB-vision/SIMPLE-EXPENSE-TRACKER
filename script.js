@@ -6,6 +6,7 @@ let totalVal=document.querySelector("#total-val")
 let list=document.querySelector("#expense-list")
 let searchInp=document.querySelector("#search")
 let sortSelect=document.querySelector("#sort-select")
+let clear_btn=document.querySelector("#clear-all-btn")
 
 
 
@@ -113,6 +114,19 @@ searchInp.addEventListener("input",function(){
 //Sorting the Expenses
 sortSelect.addEventListener("change",function(){
     render()
+})
+
+//CLEAR ALL BTN LOGIC
+clear_btn.addEventListener("click",function(){
+    if(expenses.length>0){
+        let conf=prompt("This will clear all history. Do you accept(Y/N)?").toUpperCase()
+        if (conf==="Y"){
+            expenses=[];
+        render()}
+    }
+    else{
+        alert("No history to clear")
+    }
 })
 
 /*
