@@ -5,6 +5,8 @@ let addBtn = document.querySelector("#add-expense");
 let totalVal=document.querySelector("#total-val")
 let list=document.querySelector("#expense-list")
 let searchInp=document.querySelector("#search")
+let sortSelect=document.querySelector("#sort-select")
+
 
 
 // 2. GETTING THE HISTORY FROM LOCAL STORAGE
@@ -32,6 +34,18 @@ addBtn.addEventListener("click",function(){
 function render(dataToPrint = expenses){
    let clutter="";
    let total=0;
+
+   let sortBy = sortSelect.value; 
+
+    // 2. Sort the data before printing it
+    if (sortBy === "newest") {
+        dataToPrint.sort((a, b) => b.id - a.id);
+    } else if (sortBy === "high") {
+        dataToPrint.sort((a, b) => b.amount - a.amount);
+    } else if (sortBy === "low") {
+        dataToPrint.sort((a, b) => a.amount - b.amount);
+    }
+
     dataToPrint.forEach(function(item,index){
         clutter+=`
         <li><i>${item.name}</i>  : <span class="amo">$${item.amount}</span>
@@ -96,8 +110,12 @@ searchInp.addEventListener("input",function(){
 })
 
 
+//Sorting the Expenses
+sortSelect.addEventListener("change",function(){
+    render()
+})
+
 /*
     TO ADD:
-    1)sorting
-    2) when we delete while seaching the search has to be used again
+    1) when we delete while seaching the search has to be used again
 */
